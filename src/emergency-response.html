@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Emergency Response - HappyTails</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(90deg, #ff6f61, #ff914d);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background: url('https://source.unsplash.com/1600x600/?veterinary,pet') no-repeat center center/cover;
+            color: white;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .service-section, .tips-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+            margin: 10px;
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .contact-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 50%;
+            margin: auto;
+            text-align: center;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            background: #ff6f61;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .contact-form button:hover {
+            background: #e65b50;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pet Emergency Response <i class="fas fa-ambulance"></i></h1>
+    </header>
+    
+    <section class="hero">
+        <h2>24/7 Emergency Care for Your Pets</h2>
+        <p>Immediate assistance for pet emergencies. Contact us now!</p>
+    </section>
+    
+    <div class="container">
+        <h2>Emergency Services <i class="fas fa-first-aid"></i></h2>
+        <div class="service-section">
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?vet,hospital" alt="Vet Emergency">
+                <h3>Emergency Vet Care</h3>
+                <p>Immediate vet assistance for critical conditions.</p>
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?ambulance,pet" alt="Pet Ambulance">
+                <h3>Pet Ambulance</h3>
+                <p>Fast transportation to the nearest vet hospital.</p>
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?dog,help" alt="First Aid">
+                <h3>First Aid Guidance</h3>
+                <p>Essential tips to stabilize your pet before medical help arrives.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2>Pet Safety Tips <i class="fas fa-exclamation-triangle"></i></h2>
+        <div class="tips-section">
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?pet-safety" alt="Pet Safety">
+                <h3>Preventing Accidents</h3>
+                <p>Learn how to keep your pet safe from common hazards.</p>
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?pet-food" alt="Pet Nutrition">
+                <h3>Emergency Nutrition</h3>
+                <p>Understand what to feed your pet in emergency situations.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2>Report an Emergency <i class="fas fa-phone-alt"></i></h2>
+        <form class="contact-form" id="emergencyForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="tel" id="phone" placeholder="Your Phone Number" required pattern="[0-9]{10}">
+            <textarea id="message" placeholder="Describe the emergency" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+    <footer>
+        <p>© 2025 HappyTails. All rights reserved. <i class="fas fa-paw"></i></p>
+    </footer>
+    
+    <script>
+        document.getElementById('emergencyForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let name = document.getElementById('name').value;
+            let phone = document.getElementById('phone').value;
+            let message = document.getElementById('message').value;
+            
+            if(name === '' || phone === '' || message === '') {
+                alert('Please fill out all fields.');
+                return;
+            }
+            
+            alert('Emergency reported successfully! We will contact you shortly.');
+            document.getElementById('emergencyForm').reset();
+        });
+    </script>
+</body>
+</html>
+<!-- Compare this snippet from Happytails/src/index.html: -->

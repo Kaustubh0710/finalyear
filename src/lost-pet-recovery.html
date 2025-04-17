@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost Pet Recovery</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('pet-image-preview');
+                output.src = reader.result;
+                output.style.display = 'block';
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+        
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 40.7128, lng: -74.0060 },
+                zoom: 10
+            });
+        }
+        
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('../image/lost.jpg') no-repeat center center/cover;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        .dark-mode {
+            background: #121212;
+            color: white;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin-top: 50px;
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group button {
+            background: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .form-group button:hover {
+            background: #e64a19;
+        }
+        #map {
+            height: 300px;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .lost-pets {
+            margin-top: 40px;
+        }
+        .lost-pet-card {
+            display: inline-block;
+            width: 30%;
+            background: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        .lost-pet-card:hover {
+            transform: scale(1.05);
+        }
+        .dark-mode .lost-pet-card {
+            background: #333;
+            color: white;
+        }
+        .dark-mode-toggle {
+            margin-top: 20px;
+            padding: 10px;
+            background: #ff9800;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <div class="container">
+        <h1>Lost Pet Recovery</h1>
+        <p>If you have lost a pet, fill out the details below to help others find it.</p>
+        <form>
+            <div class="form-group">
+                <label>Pet Name:</label>
+                <input type="text" placeholder="Enter pet's name">
+            </div>
+            <div class="form-group">
+                <label>Description:</label>
+                <textarea placeholder="Describe the pet (color, breed, etc.)"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Last Seen Location:</label>
+                <input type="text" placeholder="Enter location details">
+            </div>
+            <div class="form-group">
+                <label>Upload Pet Image:</label>
+                <input type="file" accept="image/*" onchange="previewImage(event)">
+                <img id="pet-image-preview" src="#" alt="Pet Image" style="width: 100px; height: auto; margin-top: 10px; display: none;">
+            </div>
+            <div id="map"></div>
+            <div class="form-group">
+                <label>Contact Info:</label>
+                <input type="text" placeholder="Your phone/email">
+            </div>
+            <div class="form-group">
+                <button type="submit">Report Lost Pet</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="lost-pets">
+        <h2>Recently Reported Lost Pets</h2>
+        <div class="lost-pet-card">
+            <h3>Bella</h3>
+            <p>Golden Retriever, lost near Central Park</p>
+            <img src="dog1.jpg" width="100%">
+        </div>
+        <div class="lost-pet-card">
+            <h3>Milo</h3>
+            <p>Tabby Cat, last seen near 5th Avenue</p>
+            <img src="cat1.jpg" width="100%">
+        </div>
+    </div>
+</body>
+</html>

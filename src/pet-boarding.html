@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Boarding - HappyTails</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            background: url('../image/bord.jpg');
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(90deg, #ff6f61, #ff914d);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background: url('https://source.unsplash.com/1600x600/?pet,boarding') no-repeat center center/cover;
+            color: white;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .service-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+            margin: 10px;
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .contact-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 50%;
+            margin: auto;
+            text-align: center;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            background: #ff6f61;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .contact-form button:hover {
+            background: #e65b50;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pet Boarding <i class="fas fa-home"></i></h1>
+    </header>
+    
+    <section class="hero">
+        <h2>Safe & Comfortable Boarding for Your Pets</h2>
+        <p>Book a cozy stay for your furry friends today!</p>
+    </section>
+    
+    <div class="container">
+        <h2>Boarding Services <i class="fas fa-paw"></i></h2>
+        <div class="service-section">
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?dog,bed" alt="Luxury Boarding">
+                <h3>Luxury Suites</h3>
+                <p>Comfortable private spaces with premium bedding.</p>
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?pet,play" alt="Play Areas">
+                <h3>Spacious Play Areas</h3>
+                <p>Interactive and safe play zones for your pets.</p>
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?dog,food" alt="Healthy Meals">
+                <h3>Nutritious Meals</h3>
+                <p>Customized meal plans for your pet’s health.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2>Book a Stay <i class="fas fa-calendar-alt"></i></h2>
+        <form class="contact-form" id="boardingForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="text" id="phone" placeholder="Your Phone Number" required>
+            <input type="text" id="petName" placeholder="Pet's Name" required>
+            <textarea id="message" placeholder="Special Requirements" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+    <footer>
+        <p>© 2025 HappyTails. All rights reserved. <i class="fas fa-paw"></i></p>
+    </footer>
+    
+    <script>
+        document.getElementById('boardingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let name = document.getElementById('name').value;
+            let phone = document.getElementById('phone').value;
+            let petName = document.getElementById('petName').value;
+            let message = document.getElementById('message').value;
+            
+            if(name === '' || phone === '' || petName === '' || message === '') {
+                alert('Please fill out all fields.');
+                return;
+            }
+            
+            alert('Booking request submitted successfully! We will contact you soon.');
+            document.getElementById('boardingForm').reset();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HappyTails - Pet Adoption</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: url('adopt.jpg') no-repeat center center/cover;
+            background: #f9f9f9;
+            text-align: center;
+            background: url('../image/adopt.jpg') no-repeat center center/cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        header {
+            background: #ff6f00;
+            padding: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .requirements {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .requirements ul {
+            text-align: left;
+            margin: 15px;
+        }
+
+        .pet-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .pet-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 250px;
+            margin: 15px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .pet-card img {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+        }
+
+        .adoption-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        .adoption-form input, .adoption-form textarea, .adoption-form select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .adoption-form button {
+            background: #ff6f00;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .adoption-form button:hover {
+            background: #e65100;
+        }
+    </style>
+</head>
+<body>
+
+    <header>🐶 HappyTails - Adopt a Pet 🐾</header>
+
+    <div class="container">
+        <div class="requirements">
+            <h2>Adoption Requirements</h2>
+            <ul>
+                <li>✅ Proof of residence (rental agreement or ownership papers)</li>
+                <li>✅ Valid ID proof (passport, driving license, etc.)</li>
+                <li>✅ Commitment to providing food, medical care, and vaccinations</li>
+                <li>✅ Home check by the organization</li>
+                <li>✅ Adoption fee (if applicable)</li>
+            </ul>
+        </div>
+
+        <h2>🐾 Available Pets for Adoption 🐾</h2>
+        <div class="pet-gallery">
+            <div class="pet-card">
+                <img src="https://source.unsplash.com/300x200/?dog" alt="Dog">
+                <h3>Bella</h3>
+                <p>Age: 2 years | Breed: Labrador</p>
+                <p>Friendly & loves kids</p>
+            </div>
+
+            <div class="pet-card">
+                <img src="https://source.unsplash.com/300x200/?puppy" alt="Dog">
+                <h3>Max</h3>
+                <p>Age: 1 year | Breed: Golden Retriever</p>
+                <p>Playful & energetic</p>
+            </div>
+
+            <div class="pet-card">
+                <img src="https://source.unsplash.com/300x200/?dog,pet" alt="Dog">
+                <h3>Daisy</h3>
+                <p>Age: 3 years | Breed: Beagle</p>
+                <p>Calm & affectionate</p>
+            </div>
+        </div>
+
+        <div class="adoption-form">
+            <h2>Fill Out the Adoption Form</h2>
+            <form>
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <select required>
+                    <option value="">Select a Pet</option>
+                    <option value="Bella">Bella (Labrador)</option>
+                    <option value="Max">Max (Golden Retriever)</option>
+                    <option value="Daisy">Daisy (Beagle)</option>
+                </select>
+                <textarea placeholder="Why do you want to adopt this pet?" required></textarea>
+                <button type="submit">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

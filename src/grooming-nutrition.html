@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Grooming & Nutrition - HappyTails</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+    <style>
+        body {
+            background: url('../image/groming.jpg') ;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            background-image: url('E:\FinalYearProject\image\groming.jpg');
+        }
+        header {
+            background: linear-gradient(to right, #ff9800, #ff5722);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background: url('https://source.unsplash.com/1600x600/?pets') no-repeat center center/cover;
+            color: white;
+            position: relative;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .service-section, .nutrition-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            text-align: center;
+            margin: 15px;
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.1);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .book-btn {
+            background: linear-gradient(to right, #ff9800, #ff5722);
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .book-btn:hover {
+            background: #e64a19;
+            transform: scale(1.05);
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pet Grooming & Nutrition <i class="fas fa-paw"></i></h1>
+    </header>
+    
+    <section class="hero">
+        <h2>Professional Pet Grooming & Nutrition Guidance</h2>
+        <p>Give your pet the best care with our grooming and nutrition services!</p>
+    </section>
+    
+    <div class="container">
+        <h2>Our Grooming Services <i class="fas fa-cut"></i></h2>
+        <div class="service-section">
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?dog-grooming" alt="Grooming">
+                <h3>Full Grooming</h3>
+                <p>Complete grooming service including bath, trim, and styling.</p>
+                <button class="book-btn">Book Now</button>
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?cat-grooming" alt="Grooming">
+                <h3>Cat Grooming</h3>
+                <p>Specialized grooming services for your feline friend.</p>
+                <button class="book-btn">Book Now</button>
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?pet-spa" alt="Spa">
+                <h3>Luxury Pet Spa</h3>
+                <p>Pamper your pet with a relaxing spa experience.</p>
+                <button class="book-btn">Book Now</button>
+            </div>
+        </div>
+    
+        <h2>Nutrition Tips <i class="fas fa-carrot"></i></h2>
+        <div class="nutrition-section">
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?dog-food" alt="Dog Nutrition">
+                <h3>Best Food for Dogs</h3>
+                <p>Discover the healthiest food options for your dog.</p>
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?cat-food" alt="Cat Nutrition">
+                <h3>Healthy Cat Diet</h3>
+                <p>Ensure a balanced diet for your cat’s well-being.</p>
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?pet-supplements" alt="Pet Supplements">
+                <h3>Essential Pet Supplements</h3>
+                <p>Boost your pet's health with recommended supplements.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 HappyTails. All rights reserved. <i class="fas fa-paw"></i></p>
+    </footer>
+</body>
+</html>
