@@ -1,0 +1,57 @@
+PS C:\xampp\htdocs\FinalYearProject> git puss
+
+The most similar command is
+        push
+PS C:\xampp\htdocs\FinalYearProject> git push
+remote: Repository not found.
+fatal: repository 'https://github.com/Kaustubh0710/FinalYearProject.git/' not found
+PS C:\xampp\htdocs\FinalYearProject> git init
+Reinitialized existing Git repository in C:/xampp/htdocs/FinalYearProject/.git/
+PS C:\xampp\htdocs\FinalYearProject> git checkout -b updated
+Switched to a new branch 'updated'
+PS C:\xampp\htdocs\FinalYearProject> git commit -m "this the module which will contain all the php logic "
+On branch updated
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    src/Login2.php
+        modified:   src/home.php
+        modified:   src/login.php
+        deleted:    src/pet-boarding.html
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/BoardBookings.php
+        src/BoarderListing.php
+        src/Boarder_profile.php
+        src/Boarders.php
+        src/Logout.php
+        src/PHPMailer-master/
+        src/ServiceProvLogin.php
+        src/ServiceProvSignup.php
+        src/ServiceVer.php
+        src/add-pet-details.html
+        src/book-a-professional-groomer.html
+        src/cat.jpg
+        src/dog.jpg
+        src/dogmating.html
+        src/forgot_password.php
+        src/gromvalidate.html
+        src/groomin_rigester.html
+        src/index.html
+        src/mating.jpg
+        src/matingregister.html
+        src/personal-details.png
+        src/pet_boarding.php
+        src/petmat.jpg
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch updated
+# Changes to be committed:
+#       deleted:    src/Login2.php
+#       modified:   src/home.php
+#       modified:   src/login.php
+#       deleted:    src/pet-boarding.html
+.git/COMMIT_EDITMSG [unix] (09:57 28/04/2025)                                see i ned like to updete my code in git

@@ -1,3 +1,8 @@
+<?php
+session_start();
+$isLoggedIn = isset($_SESSION['full_name']);
+$fullName = $isLoggedIn ? $_SESSION['full_name'] : '';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,13 +33,15 @@
             color: #fff;
         }
         header a{
-            background-color: red;
             position: relative;
-            color: white;
+            color: #FFFFFF;
+            text-decoration: none;
             left: 47%;
             top: 0px;
-            box-shadow: #444;
-            border-bottom: #ffb74d;
+        }
+        header a:hover {
+            color: #ff6f00;
+            text-decoration: underline;
         }
         nav {
             display: flex;
@@ -76,7 +83,7 @@
             border-radius: 8px;
             margin: 15px;
             padding: 20px;
-            width: 250px;
+            width: 300px;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
@@ -110,27 +117,62 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1> <i class="fas fa-paw">HappyTails</i></h1>
-            <a href="C:\xampp\htdocs\FinalYearProject\src\index.php">Login </a>
-    </header>
-    
+<header style="position: relative;">
+  <h1><i class="fas fa-paw">HappyTails</i></h1>
+
+  <!-- Become a Host Button - Left Corner -->
+  <div style="position: absolute; top: 20px; left: 1px;">
+    <a href="ServiceProvSignup.php" style="color: red; background-color: transparent; border: 2px solid red; padding: 5px 10px; text-decoration: none; font-weight: bold; cursor: pointer;">
+      Become a Host
+    </a>
+  </div>
+
+  <!-- Login/Logout/User Info - Right Corner -->
+  <div style="position: absolute; top: 20px; right: 30px;">
+    <?php if ($isLoggedIn): ?>
+      <a href="user_profile.php" style="text-decoration: none; color: #fff; font-weight: bold;">
+        👤 <?php echo htmlspecialchars($fullName); ?>
+      </a>
+      <form action="logout.php" method="POST" style="display: inline;">
+        <button type="submit" style="margin-left: 180px; color: red; background-color: transparent; border: 2px solid red; padding: 5px 10px; cursor: pointer;">
+          Logout
+        </button>
+      </form>
+    <?php else: ?>
+      <a href="login.php" style="text-decoration: none; color: #fff;">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </a>
+    <?php endif; ?>
+  </div>
+</header>    
     <section class="hero">
         <img src="../image/home.jpg" alt="Pets">
     </section>
     
     <section class="services">
         <div class="service-card">
-            <img src="../image/gro.png" alt="Grooming">
-            <h3>Pet Grooming <i class="fas fa-groom"></i></h3>
-            <p>Book In-Home Cat and Dog Grooming Service</p>
-         <a href="grooming-nutrition.html" >  <button>Book Now</button></a>
+            <img src="../image/mating2.jpg" alt="Love">
+            <h3>  Register for Pet Mating  <i class="fas fa-love"></i></h3>
+            <p> Find Your Furry Soulmate</p>
+         <a href="MatingRegister1.php"><button> Find Now</button></a>
+        </div>
+        <div class="service-card">
+            <img src="../image/mater.png" alt="Love">
+            <h3>  Pet Mating  <i class="fas fa-love"></i></h3>
+            <p> Find Your Furry Soulmate</p>
+         <a href="petmating.php"><button> Find Now</button></a>
         </div>
         <div class="service-card">
             <img src="../image/bord.jpg" alt="Boarding">
             <h3>Pet Boarding <i class="fas fa-board"></i></h3>
             <p>Book Cat and Dog Boarding Service</p>
-            <a href="pet-boarding.html"><button>Book Now</button></a>
+            <a href="pet_boarding.php"><button>Book Now</button></a>
+        </div>
+        <div class="service-card">
+            <img src="../image/gro.png" alt="Grooming">
+            <h3>Pet Grooming <i class="fas fa-groom"></i></h3>
+            <p>Book In-Home Cat and Dog Grooming Service</p>
+         <a href="index.html" >  <button>Book Now</button></a>
         </div>
         <div class="service-card">
             <img src="../image/lost.jpg" alt="Lost">
@@ -156,12 +198,7 @@
             <p>Adopt, Don't Shop: Save a Life</p>
          <a href="pet-adoption.html"><button>Adopt Now</button></a>
         </div>
-        <div class="service-card">
-            <img src="../image/mater.png" alt="Love">
-            <h3>  Pet Matrimony  <i class="fas fa-love"></i></h3>
-            <p> Find Your Furry Soulmate</p>
-         <a href="pet-matrimony.html"><button> Find Now</button></a>
-        </div>
+        
     </section>
    
   

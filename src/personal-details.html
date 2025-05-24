@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Details - ThePetNest</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            color: #666;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        .address-section {
+            margin-bottom: 15px;
+        }
+        .address-section label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            color: #666;
+        }
+        .address-options {
+            margin-bottom: 10px;
+        }
+        .address-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .address-option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .address-option label {
+            font-size: 14px;
+            color: #333;
+            text-transform: none;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .remove-address-btn {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .remove-address-btn:hover {
+            background-color: #cc0000;
+        }
+        .current-location-btn,
+        .add-address-btn {
+            background-color: #ff6200;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .current-location-btn:hover,
+        .add-address-btn:hover {
+            background-color: #e55a00;
+        }
+        .address-form {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .address-form input {
+            margin-bottom: 10px;
+        }
+        .address-form button {
+            background-color: #ff6200;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .address-form button:hover {
+            background-color: #e55a00;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .back-btn,
+        .next-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .back-btn {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+        }
+        .back-btn:hover {
+            background-color: #e0e0e0;
+        }
+        .next-btn {
+            background-color: #ff6200;
+            color: white;
+        }
+        .next-btn:hover {
+            background-color: #e55a00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Please Enter your Personal Details.</h2>
+            <form id="personal-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your First Name</label>
+                        <input type="text" id="first-name" name="first-name" placeholder="Please enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Last Name</label>
+                        <input type="text" id="last-name" name="last-name" placeholder="Please enter your full name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="Please enter your email id" required>
+                </div>
+                <div class="address-section">
+                    <label>Select or Add Your Address</label>
+                    <div class="address-options" id="address-options">
+                        <div class="address-option">
+                            <input type="radio" id="address1" name="address" value="" checked>
+                            <label for="address1" id="address-label">Loading address...</label>
+                            <button type="button" class="remove-address-btn" onclick="removeAddress(this)">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" class="current-location-btn" onclick="getCurrentLocation()">Use Current Location</button>
+                    <button type="button" class="add-address-btn" onclick="toggleAddressForm()">Add new address +</button>
+                    <div class="address-form" id="address-form">
+                        <input type="text" id="new-address" placeholder="Enter your address (e.g., 123, Main St, City, State, Country)" required>
+                        <button type="button" onclick="addNewAddress()">Save Address</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Additional Note for Groomer (optional)</label>
+                    <textarea id="note" name="note" rows="4"></textarea>
+                </div>
+                <div class="buttons">
+                    <button type="button" class="back-btn" onclick="goBack()">Back</button>
+                    <button type="submit" class="next-btn">Next ➔</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Extract data from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const city = urlParams.get('city') || 'Bengaluru';
+        const petType = urlParams.get('petType');
+        const petName = urlParams.get('petName');
+        const petBreed = urlParams.get('petBreed');
+        const petGender = urlParams.get('petGender');
+        const petSize = urlParams.get('petSize');
+        const petAggression = urlParams.get('petAggression');
+        const petAge = urlParams.get('petAge');
+
+        // Address mapping based on city
+        const addressMap = {
+            'Bengaluru': '123, MG Road, Bengaluru, Karnataka, India',
+            'Mumbai': '456, Marine Drive, Mumbai, Maharashtra, India',
+            'Delhi': '789, Connaught Place, New Delhi, Delhi, India',
+            'Chennai': '321, Anna Salai, Chennai, Tamil Nadu, India'
+        };
+
+        // Update default address based on city
+        const addressLabel = document.getElementById('address-label');
+        const addressInput = document.getElementById('address1');
+        const selectedAddress = addressMap[city] || 'Address not available for this city';
+        addressLabel.textContent = selectedAddress;
+        addressInput.value = selectedAddress;
+
+        // Counter for new address IDs
+        let addressCounter = 1;
+
+        // Function to get current location
+        function getCurrentLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    async (position) => {
+                        const { latitude, longitude } = position.coords;
+                        try {
+                            // Use Nominatim API for reverse geocoding
+                            const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`);
+                            const data = await response.json();
+                            const currentAddress = data.display_name || 'Unable to fetch address';
+                            addAddressOption(currentAddress);
+                        } catch (error) {
+                            console.error('Error fetching address:', error);
+                            alert('Unable to fetch address. Please try again or enter manually.');
+                        }
+                    },
+                    (error) => {
+                        console.error('Geolocation error:', error);
+                        alert('Unable to access your location. Please allow location access or enter your address manually.');
+                    }
+                );
+            } else {
+                alert('Geolocation is not supported by your browser. Please enter your address manually.');
+            }
+        }
+
+        // Function to toggle the manual address form
+        function toggleAddressForm() {
+            const addressForm = document.getElementById('address-form');
+            addressForm.style.display = addressForm.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Function to add a new address option
+        function addAddressOption(address) {
+            addressCounter++;
+            const addressOptions = document.getElementById('address-options');
+            const newOption = document.createElement('div');
+            newOption.className = 'address-option';
+            newOption.innerHTML = `
+                <input type="radio" id="address${addressCounter}" name="address" value="${address}">
+                <label for="address${addressCounter}">${address}</label>
+                <button type="button" class="remove-address-btn" onclick="removeAddress(this)">Remove</button>
+            `;
+            addressOptions.appendChild(newOption);
+            // Select the new address
+            document.getElementById(`address${addressCounter}`).checked = true;
+        }
+
+        // Function to add a manually entered address
+        function addNewAddress() {
+            const newAddressInput = document.getElementById('new-address');
+            const newAddress = newAddressInput.value.trim();
+            if (newAddress) {
+                addAddressOption(newAddress);
+                newAddressInput.value = ''; // Clear the input
+                toggleAddressForm(); // Hide the form
+            } else {
+                alert('Please enter a valid address.');
+            }
+        }
+
+        // Function to remove an address option
+        function removeAddress(button) {
+            const addressOption = button.parentElement;
+            const addressOptions = document.getElementById('address-options');
+            const remainingOptions = addressOptions.querySelectorAll('.address-option').length;
+            
+            // Remove the address option
+            addressOption.remove();
+
+            // If no addresses remain, prompt the user to add a new one
+            if (remainingOptions === 1) { // 1 because we just removed one
+                alert('No addresses remaining. Please add an address to continue.');
+                toggleAddressForm();
+            } else {
+                // If the removed address was selected, select the first remaining address
+                if (button.previousElementSibling.previousElementSibling.checked) {
+                    const firstOption = addressOptions.querySelector('.address-option input[type="radio"]');
+                    if (firstOption) {
+                        firstOption.checked = true;
+                    }
+                }
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('personal-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get form data
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const email = document.getElementById('email').value;
+            const addressOptions = document.getElementById('address-options');
+            const address = addressOptions.querySelector('input[name="address"]:checked')?.value;
+            const note = document.getElementById('note').value;
+
+            // Validate form data (basic validation)
+            if (!firstName || !lastName || !email) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Ensure at least one address is present
+            if (!address) {
+                alert('Please add at least one address to continue.');
+                toggleAddressForm();
+                return;
+            }
+
+            // Redirect to the booking confirmation page with all data
+            const params = new URLSearchParams({
+                city: city,
+                petType: petType,
+                petName: petName,
+                petBreed: petBreed,
+                petGender: petGender,
+                petSize: petSize,
+                petAggression: petAggression,
+                petAge: petAge,
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                address: address,
+                note: note || ''
+            }).toString();
+            window.location.href = `booking-confirmation.html?${params}`;
+        });
+
+        // Handle back button
+        function goBack() {
+            // Pass back the data to the previous page
+            const params = new URLSearchParams({
+                city: city,
+                petType: petType,
+                petName: petName,
+                petBreed: petBreed,
+                petGender: petGender,
+                petSize: petSize,
+                petAggression: petAggression,
+                petAge: petAge
+            }).toString();
+            window.location.href = `add-pet-details.html?${params}`;
+        }
+    </script>
+</body>
+</html>

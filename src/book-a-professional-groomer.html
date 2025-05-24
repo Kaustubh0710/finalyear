@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Professional Groomer - ThePetNest</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .header-content h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .header-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .btn {
+            background-color: #ff6200;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #e55a00;
+        }
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: white;
+        }
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 300px;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+        }
+        .step img {
+            width: 40px;
+            height: 40px;
+        }
+        .step h3 {
+            font-size: 18px;
+            margin: 0;
+        }
+        .step p {
+            font-size: 14px;
+            color: #666;
+            margin: 5px 0 0;
+        }
+        .info-box {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            text-align: left;
+        }
+        .info-box h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .info-box ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .info-box ul li::before {
+            content: "✔";
+            color: green;
+            font-size: 16px;
+        }
+        .info-box p {
+            font-size: 12px;
+            color: #999;
+            margin-top: 20px;
+        }
+        .info-box .btn {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>Pet Grooming Service at Home in <span id="city-header">Bengaluru</span></h1>
+            <p>A professional groomer will groom your pet in the comfort of your home.</p>
+            <a href="#" class="btn" onclick="goToAddPetDetails()">Book a Professional Groomer</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>How our in-home pet grooming works in <span id="city-section">Bengaluru</span>?</h2>
+        <div class="content">
+            <div class="steps">
+                <div class="step">
+                    <img src="https://via.placeholder.com/40" alt="Calendar Icon">
+                    <div>
+                        <h3>You are in Charge</h3>
+                        <p>Schedule and book an online pet grooming slot in <span id="city-step1">Bengaluru</span> - 7 days a week.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <img src="https://via.placeholder.com/40" alt="Groomer Icon">
+                    <div>
+                        <h3>Professional Pet Stylists at your Home</h3>
+                        <p>Pet Groomers in <span id="city-step2">Bengaluru</span> bring all the equipment to your home.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <img src="https://via.placeholder.com/40" alt="Pet Icon">
+                    <div>
+                        <h3>No Travel Stress</h3>
+                        <p>Your furry baby will enjoy a stress-free grooming service in <span id="city-step3">Bengaluru</span>.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <img src="https://via.placeholder.com/40" alt="Cleaning Icon">
+                    <div>
+                        <h3>Groomer Cleans Up</h3>
+                        <p>Hassle-free, clean, and tidy grooming service in <span id="city-step4">Bengaluru</span> - your house is clean before we leave.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="info-box">
+                <h3>Book a Professional Pet Groomer in <span id="city-info">Bengaluru</span> on ThePetNest</h3>
+                <ul>
+                    <li>All Pet Groomers in <span id="city-info1">Bengaluru</span> Pass a basic background check</li>
+                    <li>All Pet Groomers in <span id="city-info2">Bengaluru</span> have professional experience of grooming</li>
+                    <li>Apart from the bathing area and personal towels, your pet groomer in <span id="city-info3">Bengaluru</span> will take care of everything—including cleanup!</li>
+                </ul>
+                <p>All services booked in <span id="city-info4">Bengaluru</span> are backed by the ThePetNest Guarantee. Support, Trust, and Reservation Protection.</p>
+                <a href="#" class="btn" onclick="goToAddPetDetails()">Book a Professional Pet Groomer</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Extract the city from the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const city = urlParams.get('city') || 'Bengaluru'; // Default to Bengaluru if no city is provided
+
+        // Update all city placeholders with the selected city
+        document.getElementById('city-header').textContent = city;
+        document.getElementById('city-section').textContent = city;
+        document.getElementById('city-step1').textContent = city;
+        document.getElementById('city-step2').textContent = city;
+        document.getElementById('city-step3').textContent = city;
+        document.getElementById('city-step4').textContent = city;
+        document.getElementById('city-info').textContent = city;
+        document.getElementById('city-info1').textContent = city;
+        document.getElementById('city-info2').textContent = city;
+        document.getElementById('city-info3').textContent = city;
+        document.getElementById('city-info4').textContent = city;
+
+        // Function to redirect to the Add Pet Details page with the city parameter
+        function goToAddPetDetails() {
+            window.location.href = `add-pet-details.html?city=${encodeURIComponent(city)}`;
+        }
+    </script>
+</body>
+</html>

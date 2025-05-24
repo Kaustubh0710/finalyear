@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if (isset($_SESSION['login_error'])) {
+        echo "<p style='color: red; margin-top: 10px; font-size: 14px;'>" . $_SESSION['login_error'] . "</p>";
+        unset($_SESSION['login_error']); // clear message after displaying
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,7 +140,7 @@
 <body>
     <div class="login-container">
         <h2>Login to HappyTails</h2>
-        <form id="loginForm" action="LoginVer.php" method="POST">
+        <form id="loginForm" action="ServiceVer.php" method="POST">
             <input type="email" id="email" name="email" placeholder="Email Address" required>
 
             <div class="password-container">
@@ -141,18 +148,18 @@
                 <span class="toggle-password" onclick="togglePassword(this)">👁️</span>
             </div>
 
-    <button type="submit">Login</button>
-</form>
+            <select name="user_type" required style="width: 100%; padding: 14px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 16px;">
+                <option value="">Select User Type</option>
+                <option value="Pet Groomers">Pet Groomers</option>
+                <option value="Veterinarian">Veterinarian</option>
+                <option value="Boarders">Boarders</option>
+            </select>
 
-<?php
-    session_start();
-    if (isset($_SESSION['login_error'])) {
-        echo "<p style='color: red; margin-top: 10px; font-size: 14px;'>" . $_SESSION['login_error'] . "</p>";
-        unset($_SESSION['login_error']); // clear message after displaying
-    }
-?>
+            <button type="submit">Login</button>
+        </form>
+
         <a href="forgot_password.php" class="forgot-password">Forgot Password?</a>
-        <a href="Signup.php" class="signup">Create an Account</a>
+        <a href="ServiceProvSignup.php" class="signup">Create an Account</a>
     </div>
 
     <script>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Pet Details - ThePetNest</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        .form-container h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .city-display {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .form-group .options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .form-group .options label {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            font-size: 14px;
+            text-align: center;
+        }
+        .form-group .options input[type="radio"] {
+            display: none;
+        }
+        .form-group .options input[type="radio"]:checked + label {
+            background-color: #ff6200;
+            color: white;
+        }
+        .next-btn {
+            background-color: #ff6200;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            float: right;
+        }
+        .next-btn:hover {
+            background-color: #e55a00;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add Pet Details</h2>
+        <div class="city-display" id="city-display">Grooming in Bengaluru</div>
+        <form id="pet-form">
+            <div class="form-group">
+                <label>What type of pet?</label>
+                <div class="options">
+                    <input type="radio" id="cat" name="pet-type" value="cat" checked>
+                    <label for="cat">🐱 Cat</label>
+                    <input type="radio" id="dog" name="pet-type" value="dog">
+                    <label for="dog">🐶 Dog</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Name of your pet?</label>
+                <input type="text" id="pet-name" name="pet-name" placeholder="Please enter your pet's name" required>
+            </div>
+            <div class="form-group">
+                <label>Breed of your pet?</label>
+                <select id="pet-breed" name="pet-breed" required>
+                    <option value="">Select breed here</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Gender of your pet?</label>
+                <div class="options">
+                    <input type="radio" id="female" name="pet-gender" value="female" checked>
+                    <label for="female">Female</label>
+                    <input type="radio" id="male" name="pet-gender" value="male">
+                    <label for="male">Male</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Size of your Pet?</label>
+                <div class="options">
+                    <input type="radio" id="small" name="pet-size" value="small" checked>
+                    <label for="small">Small</label>
+                    <input type="radio" id="medium" name="pet-size" value="medium">
+                    <label for="medium">Medium</label>
+                    <input type="radio" id="large" name="pet-size" value="large">
+                    <label for="large">Large</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>How aggressive is your pet?</label>
+                <div class="options">
+                    <input type="radio" id="low" name="pet-aggression" value="low" checked>
+                    <label for="low">Low</label>
+                    <input type="radio" id="normal" name="pet-aggression" value="normal">
+                    <label for="normal">Normal</label>
+                    <input type="radio" id="high" name="pet-aggression" value="high">
+                    <label for="high">High</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>How old is your pet?</label>
+                <div class="options">
+                    <input type="radio" id="less-than-3-months" name="pet-age" value="< 3 Months" checked>
+                    <label for="less-than-3-months">< 3 Months</label>
+                    <input type="radio" id="less-than-1-year" name="pet-age" value="< 1 Year">
+                    <label for="less-than-1-year">< 1 Year</label>
+                    <input type="radio" id="1-plus-years" name="pet-age" value="1+ Years">
+                    <label for="1-plus-years">1+ Years</label>
+                </div>
+            </div>
+            <button type="submit" class="next-btn">Next ➔</button>
+        </form>
+    </div>
+
+    <script>
+        // Breed options for cats and dogs
+        const catBreeds = [
+            "Abyssinian", "Aegean", "American Curl", "American Bobtail",
+            "American Shorthair", "American Wirehair", "Persian"
+        ];
+        const dogBreeds = [
+            "Affenpinscher", "Afghan Hound", "Aidi", "Airedale Terrier",
+            "Akbash", "Akita", "American Bulldog"
+        ];
+
+        // Function to update breed options based on selected pet type
+        function updateBreedOptions() {
+            const petType = document.querySelector('input[name="pet-type"]:checked').value;
+            const breedSelect = document.getElementById('pet-breed');
+            breedSelect.innerHTML = '<option value="">Select breed here</option>';
+
+            const breeds = petType === 'cat' ? catBreeds : dogBreeds;
+            breeds.forEach(breed => {
+                const option = document.createElement('option');
+                option.value = breed;
+                option.textContent = breed;
+                breedSelect.appendChild(option);
+            });
+        }
+
+        // Update breed options when pet type changes
+        document.querySelectorAll('input[name="pet-type"]').forEach(radio => {
+            radio.addEventListener('change', updateBreedOptions);
+        });
+
+        // Initial update of breed options
+        updateBreedOptions();
+
+        // Extract the city from the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const city = urlParams.get('city') || 'Bengaluru'; // Default to Bengaluru if no city is provided
+        document.getElementById('city-display').textContent = `Grooming in ${city}`;
+
+        // Handle form submission
+        document.getElementById('pet-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get form data
+            const petType = document.querySelector('input[name="pet-type"]:checked').value;
+            const petName = document.getElementById('pet-name').value;
+            const petBreed = document.getElementById('pet-breed').value;
+            const petGender = document.querySelector('input[name="pet-gender"]:checked').value;
+            const petSize = document.querySelector('input[name="pet-size"]:checked').value;
+            const petAggression = document.querySelector('input[name="pet-aggression"]:checked').value;
+            const petAge = document.querySelector('input[name="pet-age"]:checked').value;
+
+            // Validate form data (basic validation)
+            if (!petName || !petBreed) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Redirect to the personal details page with form data
+            const params = new URLSearchParams({
+                city: city,
+                petType: petType,
+                petName: petName,
+                petBreed: petBreed,
+                petGender: petGender,
+                petSize: petSize,
+                petAggression: petAggression,
+                petAge: petAge
+            }).toString();
+            window.location.href = `personal-details.html?${params}`;
+        });
+    </script>
+</body>
+</html>
