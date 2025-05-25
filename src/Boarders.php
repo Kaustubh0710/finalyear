@@ -17,6 +17,8 @@ $conn = new mysqli($host, $user, $pass, $dbname);
 $boarder = $_SESSION['boarder'];
 $email = $boarder['email'];
 
+$error = "";
+
 if (isset($_POST['submit_all'])) {
   // --- Collect all form data ---
   $name = $_POST['full_name'];
@@ -30,6 +32,11 @@ if (isset($_POST['submit_all'])) {
   $dog_daycare = $_POST['dog_daycare'];
   $dog_overnight = $_POST['dog_overnight'];
   $desc = $_POST['description'];
+
+  // Validate certificate number format
+  if (!preg_match("/^[A-Z]{2,3}\d{6,8}$/", $desc)) {
+    $error = "❌ Invalid certificate number. Use 2–3 uppercase letters followed by 6–8 digits (e.g., AB123456).";
+  }
 
   // --- Upload profile picture ---
   $profile_picture = $_FILES['photo']['name'];
@@ -75,6 +82,7 @@ $stmt->bind_param(
   "ssssssssddddsss",  // Correct placeholder string
   $name, 
   $contact, 
+
   $profile_path, 
   $id_path,
   $address, 
@@ -272,8 +280,12 @@ $stmt->execute();
         <label>Upload Certificates</label>
         <input type="file" name="certificates[]" multiple required>
 
-        <label>Description</label>
-        <input type="text" name="description" placeholder="Mention any awards or achievements" required>
+        <label>Description (Certificate No.)</label>
+        <input type="text" name="description" placeholder="e.g., AB123456" pattern="[A-Z]{2,3}\d{6,8}" title="Use 2–3 capital letters followed by 6–8 digits" required value="<?php echo htmlspecialchars($_POST['description'] ?? ''); ?>">
+
+        <?php if (!empty($error)) : ?>
+            <p style="color:red; font-weight:bold;"><?php echo $error; ?></p>
+        <?php endif; ?>
     </div>
 
     <!-- ✅ Single submit button here -->
