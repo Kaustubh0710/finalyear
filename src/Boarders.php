@@ -281,7 +281,7 @@ $stmt->execute();
         <input type="file" name="certificates[]" multiple required>
 
         <label>Description (Certificate No.)</label>
-        <input type="text" name="description" placeholder="e.g., AB123456" pattern="[A-Z]{2,3}\d{6,8}" title="Use 2–3 capital letters followed by 6–8 digits" required value="<?php echo htmlspecialchars($_POST['description'] ?? ''); ?>">
+        <input type="text" name="description" pattern="[A-Z]{2,3}\d{6,8}" title="Enter correct pattern" required value="<?php echo htmlspecialchars($_POST['description'] ?? ''); ?>">
 
         <?php if (!empty($error)) : ?>
             <p style="color:red; font-weight:bold;"><?php echo $error; ?></p>
