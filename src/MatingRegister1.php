@@ -1,5 +1,5 @@
 <?php
-include 'auth_check.php';
+include 'auth_check.php'; // Ensure user is logged in
 ?>
 
 <!DOCTYPE html>
@@ -288,16 +288,6 @@ include 'auth_check.php';
 
     document.getElementById('petForm').addEventListener('submit', function (event) {
   event.preventDefault();
-
-  // Check if user is logged in
-  const isLoggedIn = document.getElementById('isLoggedIn').value === 'true';
-
-  if (!isLoggedIn) {
-    if (confirm("You need to login first.\n\nPress OK to go to login page.\nPress Cancel to stay here.")) {
-      window.location.href = "login.php"; // replace login.php with your login page
-    }
-    return; // Stop form submission
-  }
 
   // Otherwise, continue validating the form as you already do
 
