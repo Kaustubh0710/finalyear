@@ -8,7 +8,7 @@ $conn = new mysqli($host, $user, $pass, $db);
 
 $location = $_GET['location'];
 
-$sql = "SELECT name, dog_overnight, address, profile_picture FROM boarders WHERE address LIKE ?";
+$sql = "SELECT name, dog_overnight, address, profile_picture, email FROM boarders WHERE address LIKE ?";
 $stmt = $conn->prepare($sql);
 $likeLocation = "%" . $location . "%";
 $stmt->bind_param("s", $likeLocation);
@@ -83,6 +83,7 @@ $result = $stmt->get_result();
 <?php
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        echo '<a href="boarder_details.php?email=' . urlencode($row['email']) . '" style="text-decoration:none; color:inherit;">';
         echo '<div class="boarder-card">';
         echo '<img src="../' . htmlspecialchars($row['profile_picture']) . '" alt="Profile Picture">';
         echo '<div class="boarder-info">';
@@ -90,6 +91,7 @@ if ($result->num_rows > 0) {
         echo '<div class="boarder-address">' . htmlspecialchars($row['address']) . '</div>';
         echo '<div class="boarder-price">₹' . htmlspecialchars($row['dog_overnight']) . ' / night</div>';
         echo '</div></div>';
+        echo '</a>';
     }
 } else {
     echo "<p>No boarders available at the moment.</p>";
