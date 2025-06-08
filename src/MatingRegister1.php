@@ -1,6 +1,5 @@
 <?php
-session_start();
-$isLoggedIn = isset($_SESSION['user_id']) ? 'true' : 'false';
+include 'auth_check.php';
 ?>
 
 <!DOCTYPE html>
