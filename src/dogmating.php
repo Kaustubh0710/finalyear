@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 $is_dog_page = basename($_SERVER['PHP_SELF']) === 'dogmating.php';
 
 // Query to retrieve pet data - filter for dogs if on dog page
-$sql = "SELECT id, pet_name, pet_type, breed, gender, pet_image FROM matingregister";
+$sql = "SELECT id, pet_name, pet_type, breed, gender, pet_image,email FROM matingregister";
 if ($is_dog_page) {
     $sql .= " WHERE pet_type = 'dog'";
 }
@@ -322,7 +322,7 @@ $result = $conn->query($sql);
                     
                     // Action button (only Details now)
                     echo '<div class="pet-actions">';
-                    echo '<a href="dogprofile.php?id=' . urlencode($row["id"]) . '" class="btn btn-primary"><i class="fas fa-info-circle"></i> Details</a>';
+                    echo '<a href="dogprofile.php?email=' . urlencode($row['email']) . '&breed=' . urlencode($row['breed']) . '&name=' . urlencode($row['pet_name']) . '" class="btn btn-primary"><i class="fas fa-info-circle"></i> Details</a>';
                     echo '</div>';
                     
                     echo '</div>'; // Close pet-info

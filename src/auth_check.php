@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['full_name'])) {
+if (!isset($_SESSION['full_name']) || !isset($_SESSION['email'])) {
     $redirect = basename($_SERVER['PHP_SELF']); // current page
     echo "<script>
         const confirmRedirect = confirm('You must be logged in to access this page. Do you want to login now?');
