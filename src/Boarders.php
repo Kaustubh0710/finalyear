@@ -280,7 +280,8 @@ $stmt->execute();
         <label>Upload Certificates</label>
         <input type="file" name="certificates[]" multiple required>
 
-        <label>Description (Certificate No.)</label>
+        // This is example(AB123456)
+        <label>Description (Certificate No.)</label> 
         <input type="text" name="description" pattern="[A-Z]{2,3}\d{6,8}" title="Enter correct pattern" required value="<?php echo htmlspecialchars($_POST['description'] ?? ''); ?>">
 
         <?php if (!empty($error)) : ?>

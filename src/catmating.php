@@ -13,8 +13,15 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);  
 }  
 
-// Query to retrieve only cats (case-insensitive)  
-$sql = "SELECT pet_name, pet_type, breed, gender, pet_image FROM matingregister WHERE LOWER(pet_type) = 'cat'";  
+// Check if we're filtering for dogs
+$is_cat_page = basename($_SERVER['PHP_SELF']) === 'catmating.php';
+
+// Query to retrieve pet data - filter for dogs if on dog page
+$sql = "SELECT id, pet_name, pet_type, breed, gender, pet_image,email FROM matingregister";
+if ($is_cat_page) {
+    $sql .= " WHERE pet_type = 'cat'";
+}
+
 $result = $conn->query($sql);  
 ?>  
 <!DOCTYPE html>  
@@ -249,11 +256,18 @@ $result = $conn->query($sql);
     </style>  
 </head>  
 <body>  
-    <div class="container">  
-        <header>  
-            <h1>Available Cats for Mating</h1>  
-            <p>Find the perfect companion for your cat</p>  
+    <div class="container">
+        <header>
+            <h1><?php echo $is_cat_page ? 'Available Cats' : 'Available Pets'; ?> for Mating</h1>
+            <p>Find the perfect companion for your Cat</p>
         </header>  
+
+        <?php if (!$is_cat_page): ?>
+        <div class="filter-buttons">
+            <a href="dogmating.php" class="filter-btn">Show Dogs</a>
+            <a href="catmating.php" class="filter-btn">Show Cats</a>
+        </div>
+        <?php endif; ?>
 
         <div class="pet-container">  
             <?php  
@@ -279,20 +293,20 @@ $result = $conn->query($sql);
                     echo '<div><i class="fas fa-venus-mars"></i> Gender: ' . htmlspecialchars($row["gender"]) . '</div>';  
                     echo '</div>';  
 
-                    // Action button (Details)  
-                    echo '<div class="pet-actions">';  
-                    echo '<a href="#" class="btn btn-primary"><i class="fas fa-info-circle"></i> Details</a>';  
-                    echo '</div>';  
-
-                    echo '</div>'; // Close pet-info  
-                    echo '</div>'; // Close pet-card  
+                    // Action button (only Details now)
+                    echo '<div class="pet-actions">';
+                    echo '<a href="catprofile.php?email=' . urlencode($row['email']) . '&breed=' . urlencode($row['breed']) . '&name=' . urlencode($row['pet_name']) . '" class="btn btn-primary"><i class="fas fa-info-circle"></i> Details</a>';
+                    echo '</div>';
+                    
+                    echo '</div>'; // Close pet-info
+                    echo '</div>'; // Close pet-card 
                 }  
             } else {  
                 echo '<div class="empty-state">';  
                 echo '<i class="fas fa-paw"></i>';  
                 echo '<h3>No Cats Available</h3>';  
-                echo '<p>There are currently no cats registered for mating. Check back later!</p>';  
-                echo '</div>';  
+                echo '<p>There are currently no ' . ($is_cat_page ? 'cats' : 'pets') . ' registered for mating. Check back later!</p>';
+                echo '</div>'; 
             }  
             ?>  
         </div>  
